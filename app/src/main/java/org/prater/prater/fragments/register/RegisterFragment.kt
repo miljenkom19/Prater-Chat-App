@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import org.prater.prater.R
 import org.prater.prater.databinding.FragmentRegisterBinding
@@ -34,7 +33,6 @@ class RegisterFragment : Fragment() {
             } else {
                 when {
                     it.code() == 400 -> binding.failTextView.text = getString(R.string.username_exists)
-                    it.code() == 404 -> binding.failTextView.text = "Miljenko"
                     it.code() == 503 -> binding.failTextView.text = getString(R.string.server_error)
                     else -> binding.failTextView.text = getString(R.string.check_internet_connection)
                 }

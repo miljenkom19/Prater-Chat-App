@@ -6,18 +6,16 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.RecyclerView
 import org.prater.prater.databinding.MessageItemBinding
 import org.prater.prater.model.Message
-import org.prater.prater.viewmodel.SharedViewModel
 
 class ChatAdapter(
     private val messageList: List<Message>,
-    private val userId: Int,
-    private val viewModel: SharedViewModel
+    private val userId: Int
 ) :
     RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
 
     class ViewHolder(private val binding: MessageItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(message: Message, userId: Int, viewModel: SharedViewModel) {
+        fun bind(message: Message, userId: Int) {
             if (message.userId == userId)
                 setConstraintsForUser()
             else
@@ -126,7 +124,7 @@ class ChatAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(messageList[position], userId, viewModel)
+        holder.bind(messageList[position], userId)
     }
 
     override fun getItemCount() = messageList.size

@@ -30,7 +30,7 @@ class ChatFragment : Fragment() {
 
         viewModel.messages.observe(viewLifecycleOwner) {
             val messageList = it.body() ?: emptyList()
-            val chatAdapter = ChatAdapter(messageList, userId, viewModel)
+            val chatAdapter = ChatAdapter(messageList, userId)
 
             binding.recyclerView.apply {
                 adapter = chatAdapter
