@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="org.prater.prater.fragments.login.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_overviewFragment"
+            app:destination="@id/overviewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/overviewFragment"
+        android:name="org.prater.prater.fragments.overview.OverviewFragment"
+        android:label="Conversations">
+        <action
+            android:id="@+id/action_overviewFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_overviewFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <argument
+            android:name="user"
+            app:argType="org.prater.prater.model.User" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="org.prater.prater.fragments.register.RegisterFragment"
+        android:label="Register">
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_overviewFragment"
+            app:destination="@id/overviewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="org.prater.prater.fragments.chat.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" >
+        <action
+            android:id="@+id/action_chatFragment_to_overviewFragment"
+            app:destination="@id/overviewFragment" />
+        <argument
+            android:name="conversation"
+            app:argType="org.prater.prater.model.Conversation" />
+        <argument
+            android:name="user"
+            app:argType="org.prater.prater.model.User" />
+    </fragment>
+</navigation>
