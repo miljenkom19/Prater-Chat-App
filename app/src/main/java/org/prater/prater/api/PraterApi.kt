@@ -27,7 +27,8 @@ interface PraterApi {
 
     @POST("/users/register")
     suspend fun userRegister(
-        @Body user: User
+        @Query("username") username: String,
+        @Query("password") password: String
     ): Response<User>
 
     @PUT("/users/{userId}")
@@ -62,6 +63,8 @@ interface PraterApi {
 
     @POST("/conversations")
     suspend fun postConversation(
-        @Body conversation: Conversation
+        @Query("id") id: Int,
+        @Query("user1") user1: Int,
+        @Query("user2") user2: Int
     ): Response<Conversation>
 }

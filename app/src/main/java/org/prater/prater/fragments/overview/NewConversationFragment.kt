@@ -16,6 +16,7 @@ class NewConversationFragment(private val user1: User) : DialogFragment() {
 
     private val viewModel: SharedViewModel by activityViewModels()
     private lateinit var binding: FragmentNewConversationBinding
+    private lateinit var username: String
     private lateinit var user2: User
     lateinit var conversation: Conversation
 
@@ -25,7 +26,6 @@ class NewConversationFragment(private val user1: User) : DialogFragment() {
     ): View {
         binding = FragmentNewConversationBinding.inflate(layoutInflater)
 
-        val username = binding.usernameEditText.text.toString()
         var found = false
         viewModel.users.observe(viewLifecycleOwner) { response ->
             for(u in response.body()!!) {
@@ -50,17 +50,17 @@ class NewConversationFragment(private val user1: User) : DialogFragment() {
 
         binding.startNewConversationButton.setOnClickListener {
 
+            username = binding.usernameEditText.text.toString()
             viewModel.getAllUsers()
 
             if(found) {
                 viewModel.getUserByUsername(username)
-                val conversationEntity = Conversation(null, user1.id!!, user2.id!!)
-                viewModel.postConversation(conversationEntity)
+                val conversation = Conversation(null, user1.id!!, user2.id!!)
+                viewModel.postConversation(conversation)
                 dismiss()
                 val action =
                     OverviewFragmentDirections.actionOverviewFragmentToChatFragment(conversation, user1)
                 findNavController().navigate(action)
-
             }
         }
 

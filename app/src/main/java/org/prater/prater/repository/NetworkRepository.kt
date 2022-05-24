@@ -24,7 +24,7 @@ object NetworkRepository {
     }
 
     suspend fun userRegister(user: User): Response<User> {
-        return RetrofitInstance.api.userRegister(user)
+        return RetrofitInstance.api.userRegister(user.username, user.password)
     }
 
     suspend fun updateUser(user: User): Response<User> {
@@ -41,7 +41,12 @@ object NetworkRepository {
     }
 
     suspend fun postMessage(message: Message): Response<Message> {
-        return RetrofitInstance.api.postMessage(message.id ?: 0, message.content, message.userId, message.conversationId)
+        return RetrofitInstance.api.postMessage(
+            message.id ?: 0,
+            message.content,
+            message.userId,
+            message.conversationId
+        )
     }
 
     //Conversation
@@ -49,7 +54,11 @@ object NetworkRepository {
         return RetrofitInstance.api.getAllConversationsForUser(userId)
     }
 
-    suspend fun postConversation(conversationRequest: Conversation): Response<Conversation> {
-        return RetrofitInstance.api.postConversation(conversationRequest)
+    suspend fun postConversation(conversation: Conversation): Response<Conversation> {
+        return RetrofitInstance.api.postConversation(
+            conversation.id ?: 0,
+            conversation.user1,
+            conversation.user2
+        )
     }
 }
