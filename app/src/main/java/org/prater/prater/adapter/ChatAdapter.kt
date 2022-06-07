@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import org.prater.prater.R
 import org.prater.prater.databinding.MessageItemBinding
 import org.prater.prater.model.Message
 
@@ -22,6 +24,10 @@ class ChatAdapter(
                 setConstraintsForGuest()
 
             binding.messageTextView.text = message.content
+
+            binding.profilePictureImageView.load("https://i.imgur.com/qCcds59.jpeg") {
+                placeholder(R.drawable.ic_baseline_person_24)
+            }
         }
 
         private fun setConstraintsForUser() {

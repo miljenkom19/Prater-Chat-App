@@ -62,6 +62,19 @@ interface PraterApi {
 
     @POST("/conversations")
     suspend fun postConversation(
-        @Body conversation: Conversation
+        @Query("user1") user1: Int,
+        @Query("user2") user2: Int
     ): Response<Conversation>
+
+    //Image
+    @POST("/image")
+    suspend fun postImage(
+        @Query("image") image: String,
+        @Query("userId") userId: Int
+    ): Response<Image>
+
+    @GET("/image/{imageId}")
+    suspend fun getImageDataFromImageId(
+        @Path("imageId") imageId: Int
+    ): Response<ImageResponse>
 }

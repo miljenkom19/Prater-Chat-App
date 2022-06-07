@@ -40,6 +40,12 @@ class SharedViewModel : ViewModel() {
     private val _conversations: MutableLiveData<Response<List<Conversation>>> = MutableLiveData()
     var conversations: LiveData<Response<List<Conversation>>> = _conversations
 
+    private val _image: MutableLiveData<Response<Image>> = MutableLiveData()
+    var image: LiveData<Response<Image>> = _image
+
+    private val _imageData: MutableLiveData<Response<ImageResponse>> = MutableLiveData()
+    var imageData: LiveData<Response<ImageResponse>> = _imageData
+
     fun userLogin(username: String, password: String) {
         viewModelScope.launch {
             _loginResponse.value = networkRepository.userLogin(username, password)
@@ -102,9 +108,22 @@ class SharedViewModel : ViewModel() {
         }
     }
 
-    fun postConversation(conversation: Conversation) {
+    fun postConversation(user1: Int, user2: Int) {
         viewModelScope.launch {
-            _conversation.value = networkRepository.postConversation(conversation)
+            _conversation.value = networkRepository.postConversation(user1, user2)
+        }
+    }
+
+    //Image
+    fun postImage(image: String, userId: Int) {
+        viewModelScope.launch {
+            _image.value = networkRepository.postImage(image, userId)
+        }
+    }
+
+    fun getImageDataFromImageId(imageId: Int) {
+        viewModelScope.launch {
+            _imageData.value = networkRepository.getImageDataFromImageId(imageId)
         }
     }
 }

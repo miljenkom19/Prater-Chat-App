@@ -7,5 +7,6 @@ import kotlinx.parcelize.Parcelize
 data class User(
     val id: Int?,
     val username: String,
-    val password: String
+    val password: String,
+    val profilePicture: Int
 ) : Parcelable

@@ -3,7 +3,7 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108"
-    android:tint="#000000">
+    android:tint="@color/cream"> <!-- this lines determines color of the P -->
   <group android:scaleX="1.3311"
       android:scaleY="1.3311"
       android:translateX="38.0268"

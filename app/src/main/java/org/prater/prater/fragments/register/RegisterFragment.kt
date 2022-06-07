@@ -44,7 +44,7 @@ class RegisterFragment : Fragment() {
                 username = binding.usernameEditText.text.toString().trim()
                 password = binding.passwordEditText.text.toString().trim()
 
-                viewModel.userRegister(User(null, username, password))
+                viewModel.userRegister(User(null, username, password, 0))
             }
         }
 

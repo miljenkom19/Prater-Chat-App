@@ -49,7 +49,16 @@ object NetworkRepository {
         return RetrofitInstance.api.getAllConversationsForUser(userId)
     }
 
-    suspend fun postConversation(conversationRequest: Conversation): Response<Conversation> {
-        return RetrofitInstance.api.postConversation(conversationRequest)
+    suspend fun postConversation(user1: Int, user2: Int): Response<Conversation> {
+        return RetrofitInstance.api.postConversation(user1, user2)
+    }
+
+    //Image
+    suspend fun postImage(image: String, userId: Int): Response<Image> {
+        return RetrofitInstance.api.postImage(image, userId)
+    }
+
+    suspend fun getImageDataFromImageId(imageId: Int): Response<ImageResponse> {
+        return RetrofitInstance.api.getImageDataFromImageId(imageId)
     }
 }

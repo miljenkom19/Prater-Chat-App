@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.overview.NewConversationFragment">
+    tools:context=".fragments.overview.OverviewFragment">
 
     <EditText
         android:id="@+id/usernameEditText"
@@ -35,12 +35,11 @@
         android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
         android:layout_marginTop="16dp"
         android:backgroundTint="#C62828"
         android:contentDescription="@string/cancel"
         android:text="@string/cancel"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/usernameEditText"
         app:layout_constraintTop_toBottomOf="@+id/failTextView" />
 
     <Button
@@ -48,11 +47,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="60dp"
         android:backgroundTint="#2E7D32"
         android:contentDescription="@string/start"
         android:text="@string/start"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/usernameEditText"
         app:layout_constraintTop_toBottomOf="@+id/failTextView" />
 
 
